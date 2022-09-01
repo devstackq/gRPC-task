@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "/pb";
+
+import "google/api/annotations.proto";
+
+service ApiService {
+    rpc InfoByINN(Request) returns (Response){
+       option (google.api.http) = {
+       post: "/info"
+       body: "*"
+    };
+    }
+}
+
+message Request {
+    string INN = 1;
+}
+
+message Response {
+    string  KPP      =1;
+    string	Name     =2;
+    string	FullName =3;
+    string  INN =4;
+}
